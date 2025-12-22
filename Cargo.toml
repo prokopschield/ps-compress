@@ -6,10 +6,10 @@ description = "Object wrapper around libdeflater"
 license = "GPL-3.0-or-later"
 
 [dependencies]
-libdeflater = "1.24.0"
-ps-buffer = "0.1.0-20"
-rayon = "1.10.0"
-thiserror = "2.0.12"
+libdeflater = "1.25.0"
+ps-buffer = "0.1.0-21"
+rayon = "1.11.0"
+thiserror = "2.0.17"
 
 [profile.dev]
 opt-level = 3
