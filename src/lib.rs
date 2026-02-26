@@ -1,46 +1,15 @@
+//! Deterministic Zstandard compression helpers for small payloads.
+//!
+//! This crate fixes compression policy to produce stable output for identical inputs.
+
+mod compress;
+mod decompress;
 mod error;
+mod zstd;
 
-pub use error::PsDeflateError;
+pub use compress::{compress, compress_into};
+pub use decompress::{decompress, decompress_bounded, decompress_into};
+pub use error::{CompressionError, DecompressionError};
 
-use std::cell::RefCell;
-
-use libdeflater::{CompressionLvl, Compressor, Decompressor};
-use ps_buffer::Buffer;
-
-thread_local! {
-    pub static COMPRESSOR: RefCell<Compressor> = RefCell::from(Compressor::new(CompressionLvl::best()));
-    pub static DECOMPRESSOR: RefCell<Decompressor> = RefCell::from(Decompressor::new());
-}
-
-pub fn compress_into(data: &[u8], out_data: &mut [u8]) -> Result<usize, PsDeflateError> {
-    COMPRESSOR.with(|c| Ok(c.borrow_mut().deflate_compress(data, out_data)?))
-}
-
-pub fn compress(data: &[u8]) -> Result<Buffer, PsDeflateError> {
-    let out_size = data.len() + 5;
-    let mut out_data = Buffer::alloc_uninit(out_size)?;
-
-    let size = compress_into(data, &mut out_data)?;
-
-    if size < out_size {
-        out_data.truncate(size);
-    }
-
-    Ok(out_data)
-}
-
-pub fn decompress_into(data: &[u8], out_data: &mut [u8]) -> Result<usize, PsDeflateError> {
-    DECOMPRESSOR.with(|d| Ok(d.borrow_mut().deflate_decompress(data, out_data)?))
-}
-
-pub fn decompress(data: &[u8], out_size: usize) -> Result<Buffer, PsDeflateError> {
-    let mut out_data = Buffer::alloc_uninit(out_size)?;
-
-    let size = decompress_into(data, &mut out_data)?;
-
-    if size < out_size {
-        out_data.truncate(size);
-    }
-
-    Ok(out_data)
-}
+#[cfg(test)]
+mod tests;

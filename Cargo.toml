@@ -1,15 +1,21 @@
 [package]
-name = "ps-deflate"
-version = "0.1.0-16"
+name = "ps-compress"
+version = "0.1.0-17"
 edition = "2021"
-description = "Object wrapper around libdeflater"
+description = "Object wrapper around Zstandard compression"
+documentation = "https://docs.rs/ps-compress"
+readme = "README.md"
 license = "GPL-3.0-or-later"
+keywords = ["compression", "deterministic", "storage", "zstd"]
+categories = ["compression", "encoding"]
 
 [dependencies]
-libdeflater = "1.25.0"
 ps-buffer = "0.1.0-21"
-rayon = "1.11.0"
-thiserror = "2.0.17"
+thiserror = "2.0.18"
+
+[dependencies.zstd-safe]
+version = "=7.2.4"
+default-features = false
 
 [profile.dev]
 opt-level = 3
