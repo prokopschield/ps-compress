@@ -6,7 +6,7 @@ use crate::error::CompressionError;
 use crate::zstd;
 
 // Fixed compression policy for deterministic output.
-const ZSTD_LEVEL: c_int = 2;
+const ZSTD_LEVEL: c_int = 7;
 
 /// Compresses `data` into an existing output buffer.
 ///
