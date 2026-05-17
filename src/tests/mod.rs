@@ -1,5 +1,7 @@
 #![allow(clippy::expect_used)]
 
+mod determinism;
+
 use crate::{
     compress, compress_into, decompress, decompress_bounded, decompress_into, CompressionError,
     DecompressionError,
