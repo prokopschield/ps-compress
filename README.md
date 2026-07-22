@@ -3,7 +3,7 @@
 Deterministic Zstandard compression for small binary payloads.
 
 This crate exposes a small API around zstd with a fixed compression policy
-(zstd level 2), suitable for use-cases where the same input must always
+(zstd level 7), suitable for use-cases where the same input must always
 compress to the same output bytes.
 
 ## API
