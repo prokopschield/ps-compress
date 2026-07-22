@@ -10,8 +10,8 @@ keywords = ["compression", "deterministic", "storage", "zstd"]
 categories = ["compression", "encoding"]
 
 [dependencies]
-ps-buffer = "0.1.0-21"
-thiserror = "2.0.18"
+ps-buffer = "0.1.0-22"
+thiserror = "2.0.19"
 
 [dependencies.zstd-safe]
 version = "=7.2.4"
