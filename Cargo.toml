@@ -5,6 +5,7 @@ edition = "2021"
 description = "Object wrapper around Zstandard compression"
 documentation = "https://docs.rs/ps-compress"
 readme = "README.md"
+repository = "https://github.com/prokopschield/ps-compress"
 license = "GPL-3.0-or-later"
 keywords = ["compression", "deterministic", "storage", "zstd"]
 categories = ["compression", "encoding"]
