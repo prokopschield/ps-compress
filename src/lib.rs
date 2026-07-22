@@ -1,6 +1,4 @@
-//! Deterministic Zstandard compression helpers for small payloads.
-//!
-//! This crate fixes compression policy to produce stable output for identical inputs.
+#![doc = include_str!("../README.md")]
 
 mod compress;
 mod decompress;
