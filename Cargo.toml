@@ -1,6 +1,6 @@
 [package]
 name = "ps-compress"
-version = "0.1.0-17"
+version = "0.1.0-18"
 edition = "2021"
 description = "Deterministic Zstandard compression for small binary payloads"
 documentation = "https://docs.rs/ps-compress"
